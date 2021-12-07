@@ -1,0 +1,219 @@
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    .root{
+      display:flex;
+      background-color:#dfe6e9;
+      justify-content:center;
+      align items:center;
+      padding:20px;
+      }
+    .myframe{
+      width:600px;
+      background-color:#fff;
+      padding:20px;
+      border-radius:25px;
+      }
+     .gap{
+       margin-top: 10px;
+       }
+     .btnstyle{
+       display:flex;
+       justify-content:center;
+       align-items:center;
+       }
+</style>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Attendance And Leave Project </title>
+    <link rel="stylesheet" href="/static/dashboard/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-shopify'></i>
+      <span class="logo_name">Company</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/admindashboard">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Employees</span>
+          </a>
+        </li>
+        <li>
+          <a href="/employeeregister" class="active">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Register Employee</span>
+          </a>
+        </li>
+        <li>
+          <a href="/viewattendance">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">View Attendance</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li>
+          <a href="/adminlogout">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search here...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+        <span class="admin_name">Ansh Gupta</span>
+      </div>
+    </nav>
+
+          <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Employee Register</h4>
+              <p class="card-category">Material Management</p>
+            </div>
+            <div class="card-body">
+                <head>
+    <meta charset="UTF-8">
+    <title>Material Management[Employee]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/Javascript/project.js"></script>
+</head>
+<body style="background:#dfe6e9;">
+<form action="/employeesubmit" method="post" enctype="multipart/form-data"> {% csrf_token %}
+<div class="root">
+ <div class="myframe">
+     <div class="row" style="display:flex;align-items:center;font-size:14px;letter-spacing:1px;font-weight:bold;padding-left:20px;margin-bottom:10px;">
+         <img src="/static/customer.png" width="30">
+         Add New Employees
+     </div>
+    <div class="row">
+        <div class="col">
+            <input type="text" name="firstname" class="form-control" placeholder="First Name">
+        </div>
+        <div class="col">
+            <input type="text" name="lastname" class="form-control" placeholder="Last Name">
+        </div>
+    </div>
+
+     <div class="row gap">
+        <div class="col" style="display:flex; justify-content:center; align-items:center;">
+            <input type="radio" value="Male" name="gender">
+            <i class="fas fa-male" style="color:darkviolet; margin-left:10px; margin-right:30px; font-size:25px;"></i>
+            <input type="radio" value="Female" name="gender">
+            <i class="fas fa-female" style="color:deeppink; margin-left:10px; margin-right:30px; font-size:25px;"></i>
+        </div>
+        <div class="col">
+            <input type="date" name="birthdate" class="form-control" placeholder="D.O.B.">
+        </div>
+     </div>
+
+     <div class="row gap">
+         <div class="col">
+             <input type="text" name="paddress" class="form-control" placeholder="Permanent Address">
+         </div>
+     </div>
+
+     <div class="row gap">
+         <div class="col">
+             <select class="form-control" id="states" name="states">
+                 <option>-State-</option>
+             </select>
+         </div>
+
+         <div class="col">
+             <select class="form-control" id="city" name="city">
+                 <option>-City-</option>
+             </select>
+         </div>
+     </div>
+
+     <div class="row gap">
+         <div class="col">
+             <input type="text" name="caddress" class="form-control" placeholder="Current Address">
+         </div>
+     </div>
+
+     <div class="row gap">
+        <div class="col">
+            <input type="email" name="emailaddress" class="form-control" placeholder="Email Address">
+        </div>
+        <div class="col">
+            <input type="text" name="mobilenumber" class="form-control" placeholder="Mobile Number">
+        </div>
+    </div>
+
+     <div class="row gap">
+        <div class="col">
+            <input type="text" name="designation" class="form-control" placeholder="Designation">
+        </div>
+        <div class="col btnstyle" style="flex-direction:row;">
+            <input type="file" accept="image/*" id="picture" name="picture" class="form-control" placeholder="Picture">
+            &nbsp;<img src="/static/noimage.png" id="pic" width="40" />
+        </div>
+     </div>
+
+     <div class="row gap">
+         <div class="col btnstyle">
+             <button type="submit" class="btn btn-primary w-100">Save</button>
+         </div>
+
+         <div class="col btnstyle">
+             <button type="reset" class="btn btn-primary w-100">Reset</button>
+         </div>
+     </div>
+
+     <div class="row gap">
+         <div class="col btnstyle" style="font-size:18px;font-weight:bold;">
+             {{ msg }}
+         </div>
+     </div>
+
+</div>
+</div>
+</form>
+</body>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    .root{
+      display:flex;
+      background-color:#dfe6e9;
+      justify-content:center;
+      align items:center;
+      padding:20px;
+      }
+    .myframe{
+      width:100%px;
+      background-color:#fff;
+      padding:20px;
+      border-radius:25px;
+      }
+     .gap{
+       margin-top: 10px;
+       }
+     .btnstyle{
+       display:flex;
+       justify-content:center;
+       align-items:center;
+       }
+</style>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Attendance And Leave Project </title>
+    <link rel="stylesheet" href="/static/dashboard/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-shopify'></i>
+      <span class="logo_name">Company</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/admindashboard">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Employees</span>
+          </a>
+        </li>
+        <li>
+          <a href="/employeeregister">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Register Employee</span>
+          </a>
+        </li>
+        <li>
+          <a href="/viewattendance" class="active">
+            <i class='bx bx-user' class="active"></i>
+            <span class="links_name">View Attendance</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li>
+          <a href="/adminlogout">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search here...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+        <span class="admin_name">Ansh Gupta</span>
+      </div>
+    </nav>
+
+            <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">List of Employees</h4>
+              <p class="card-category">Material Management</p>
+            </div>
+            <div class="card-body">
+<head>
+    <meta charset="UTF-8">
+    <title>Material Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/Javascript/project.js"></script>
+</head>
+<body>
+
+<div class="root">
+ <div class="myframe">
+     <div class="row" style="display:flex;align-items:center;font-size:14px;letter-spacing:1px;font-weight:bold;padding-left:20px;margin-bottom:10px;">
+         <img src="/static/customer.png" width="30">
+         List of Employees
+     </div>
+   <table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Date</th>
+      <th>In-Time</th>
+      <th>Out-Time</th>
+      <th>Total Working Hours</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+ {% for row in rows %}
+    <tr>
+      <th scope="row">{{ row.0 }}</th>
+      <td>{{ row.1 }}</td>
+      <td>{{ row.2 }}</td>
+      <td>{{ row.3 }}</td>
+      <td>{{ row.4 }}</td>
+      <td>{{ row.5 }}</td>
+      <td>{{ row.6 }}</td>
+      <td>{{ row.7 }}</td>
+    </tr>
+ {% endfor %}
+  </tbody>
+  </div>
+</div>
+</body>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+</html>

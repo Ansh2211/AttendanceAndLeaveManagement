@@ -1,0 +1,168 @@
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+    .root{
+      display:flex;
+      background-color:#dfe6e9;
+      justify-content:center;
+      align items:center;
+      padding:20px;
+      }
+    .myframe{
+      width:100%px;
+      background-color:#fff;
+      padding:20px;
+      border-radius:25px;
+      }
+     .gap{
+       margin-top: 10px;
+       }
+     .btnstyle{
+       display:flex;
+       justify-content:center;
+       align-items:center;
+       }
+</style>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Attendance And Leave Project </title>
+    <link rel="stylesheet" href="/static/dashboard/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-shopify'></i>
+      <span class="logo_name">Company</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="/employeedashboard">
+            <i class='bx bx-user' ></i>
+            <span class="links_name">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="/attendance" class="active">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Mark Attendance</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i>
+            <span class="links_name">Setting</span>
+          </a>
+        </li>
+        <li>
+          <a href="/employeelogout">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Dashboard</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search here...">
+        <i class='bx bx-search' ></i>
+      </div>
+      <div class="profile-details">
+        <span class="admin_name">Ansh Gupta</span>
+      </div>
+    </nav>
+
+            <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">List of Employees</h4>
+              <p class="card-category">Material Management</p>
+            </div>
+            <div class="card-body">
+<head>
+    <meta charset="UTF-8">
+    <title>Material Management[Employee]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/javascript/date.js"></script>
+</head>
+<body style="background:#dfe6e9;">
+<form action="/markattendance" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <input type="hidden" value="{{ row.0 }}" name="empid">
+<div class="root">
+ <div class="myframe">
+     <div class="row" style="display:flex;align-items:center;font-size:14px;letter-spacing:1px;font-weight:bold;padding-left:20px;margin-bottom:10px;">
+         <img src="/static/customer.png" width="30">
+         MARK YOUR ATTENDANCE
+     </div>
+    <div class="row">
+        <div class="col">
+            <p>Employee ID:</p>
+            <input type="text" readonly="True" name="employeeidattendance" value="{{ result.employeeid }}" id="employeeidattendance" class="form-control" placeholder="Employee ID">
+        </div>
+    </div>
+    <div class="row gap">
+        <div class="col">
+            <p>Name:</p>
+            <input type="text" readonly="True" value="{{ result.firstname }} {{ result.lastname }}" id="fullname" name="fullname" class="form-control" placeholder="First Name">
+        </div>
+        <div class="col">
+            <p>Date:</p>
+            <input type="date" readonly="True" id="currentdate" name="currentdate" class="form-control" placeholder="Date">
+        </div>
+    </div>
+    <div class="row gap">
+        <div class="col">
+            <p>In-Time</p>
+            <input type="text" readonly="True" id="intime" name="intime" class="form-control" placeholder="Attend">
+        </div>
+        <div class="col">
+            <p>Out-Time</p>
+            <input type="text" readonly="True" id="outtime" name="outtime" class="form-control" placeholder="Leave">
+        </div>
+    </div>
+    <div class="row gap">
+        <div class="col btnstyle">
+            <button type="submit" id="btnsubmit" class="btn btn-primary" style="width: 100%;">Save</button>
+        </div>
+    </div>
+     <div class="row gap">
+         <div class="col btnstyle" style="font-size:18px;font-weight:bold;">
+             {{ msg }}
+         </div>
+     </div>
+</form>
+</body>
+</html>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </section>
+
+  <script>
+   let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+sidebarBtn.onclick = function() {
+  sidebar.classList.toggle("active");
+  if(sidebar.classList.contains("active")){
+  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+}else
+  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+}
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Login form design</title>
+
+    <link rel = "stylesheet" type="text/css" href="/static/AdminLogin.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+    <div class="loginbox">
+    <img src = "/static/admin.png" class = "avatar">
+        <h1>ADMIN LOGIN</h1>
+        <form action="/checkadminlogin" method="post" enctype="application/x-www-form-urlencoded">{% csrf_token %}
+        <p>Username</p>
+            <input type="text" id="emailid" name="emailid" placeholder="  Enter Username">
+            <p>Password</p>
+            <input type="password" id="password" name="password" placeholder="  Enter Password">
+            <br><br>
+            <input type="Submit" name="" value="Login">
+            {{ msg }}
+        </form>
+    </div>
+</body>
+</head>
+</html>
