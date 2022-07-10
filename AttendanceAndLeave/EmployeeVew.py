@@ -12,7 +12,6 @@ def EmployeeLogin(request):
     except Exception as e:
         return render(request, 'EmployeeLogin.html')
 
-
 def CheckEmployeeLogin(request):
     try:
         email = request.POST['email']
